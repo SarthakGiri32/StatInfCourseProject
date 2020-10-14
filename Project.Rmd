@@ -65,21 +65,27 @@ Now, a histogram of the distribution of means of 40 exponential distributions wi
 # calculating the theoretical mean
 theoryMean <- 1 / l
 
+# calculating the sample mean 
+sampleMean <- mean(meanSim)
+
 # creating the histogram of the distribution of means
-hist(meanSim, breaks = 30, main = "Distribution of Means of 40 Exponential Distributions", xlab = "Means", ylab = "Frequency of Occurence")
+hist(meanSim, breaks = 30, 
+     main = "Distribution of Means of 40 Exponential Distributions", 
+     xlab = "Means", ylab = "Frequency of Occurence")
 
-# showing the theoretical mean on top of the histogram
-abline(v = theoryMean, col = "blue", lwd = 4, lty = 6)
+# showing the theoretical mean and sample mean in the histogram
+abline(v = theoryMean, col = "blue", lwd = 4, lty = 1)
+abline(v = sampleMean, col = "red", lwd = 4, lty = 6)
 
-# highlighting the theoretical mean
-legend(x = "topright", lwd = 4, lty = 6, col = "blue", legend = "Theoretical Mean")
+# highlighting the theoretical mean and sample mean
+legend(x = "topright", lwd = 4, lty = c(1, 6), col = c("blue", "red"), 
+       legend = c("Theoretical Mean", "Sample Mean"))
 ```
 
 From the histogram, the theoretical mean seems to be close to the sample mean. This can be verified from their numerical values.
 
 ```{r}
-# calculating and displaying the sample mean
-sampleMean <- mean(meanSim)
+# displaying the sample mean
 sampleMean
 ```
 
