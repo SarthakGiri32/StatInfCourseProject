@@ -1,7 +1,6 @@
 ---
-title: "Course Project"
+title: "Statistical Inference Course Project"
 author: "Sarthak"
-date: "14/10/2020"
 output:
   pdf_document: default
 ---
@@ -10,22 +9,36 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+# Simulation Exercise
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## 1. Overview
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The goal of this exercise is to investigate the exponential distribution and explore its adherence to the Central Limit Theorem.
 
-```{r cars}
-summary(cars)
+## 2. Sample Mean versus Theoretical Mean
+
+For the exponential distribution, its mean is `1 / lamda`, where `lambda` is defined as the rate parameter. This will act as the theoretical mean of the distribution.
+
+The sample mean to be calculated is the mean of the distribution of means of 40 exponential distributions. Ideally, this distribution would have been found by simulating 40 different exponential distributions and calculating their mean, and repeating this process infinite number of times. But, for practical purposes, we will perform 1000 such simulations.
+
+```{r}
+# setting some default values for this exercise
+
+# setting a seed for reproducibility
+set.seed(123)
+
+# initializing a variable to store the lambda value of the exponential distribution
+l <- 0.2
+
+# initializing a variable to store the size for each simulation
+n <- 40
+
+# initializing a variable to store the number of repetitons of the simulation
+repNum <- 1000
 ```
 
-## Including Plots
+Now, a histogram of the distribution of 1000 means of 40 exponential distributions will be plotted
 
-You can also embed plots, for example:
+```{r}
 
-```{r pressure, echo=FALSE}
-plot(pressure)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
