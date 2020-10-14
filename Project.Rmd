@@ -6,12 +6,11 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
 ```{r, results='hide'}
 # loading the required libraries
-
 library(ggplot2)
 ```
 
@@ -21,11 +20,13 @@ library(ggplot2)
 
 The goal of this exercise is to investigate the exponential distribution and explore its adherence to the Central Limit Theorem.
 
-## 2. Sample Mean versus Theoretical Mean
+## 2. Simulations
 
-For the exponential distribution, its mean is `1 / lamda`, where `lambda` is defined as the rate parameter. This will act as the theoretical mean of the distribution.
+In this exercise, a distribution of means of 40 exponential distributions has to be simulated. Ideally, this would be accomplished by simulating 40 different exponential distributions and calculating their mean, and repeating this process infinite number of times. But, for practical purposes, we will perform 1000 such simulations, which will yield 1000 means.
 
-The sample mean to be calculated is the mean of the distribution of means of 40 exponential distributions. Ideally, this distribution would have been found by simulating 40 different exponential distributions and calculating their mean, and repeating this process infinite number of times. But, for practical purposes, we will perform 1000 such simulations, which will yield 1000 means.
+The sample mean is the mean of the aforementioned distribution, and the sample variance is the variance of this distribution. These values will be calculated in the next 2 sections.
+
+Now, this distribution will be simulated below
 
 ```{r}
 # setting some default values for this exercise
@@ -43,8 +44,67 @@ n <- 40
 repNum <- 1000
 ```
 
-Now, a histogram of the distribution of 1000 means of 40 exponential distributions will be plotted
+```{r}
+# generating the values for 40 exponential distributions, which is repeated 1000 times
+expData <- matrix(rexp(repNum * n, rate = l), nrow = repNum, ncol = n)
+# the matrix will having the values of 40 exponential distributions in each row
+
+# calculating the mean for each simulation of 40 exponential distributions
+meanSim <- apply(expData, 1, mean)
+```
+
+The variable `meanSim` contains the values of this distribution.
+
+## 3. Sample Mean versus Theoretical Mean
+
+For the exponential distribution, the mean is `1 / lamda`, where `lambda` is defined as the rate parameter. This will act as the theoretical mean of the distribution, since the theoretical mean of the distribution of means of `n` exponential distributions is equal to the population mean.
+
+Now, a histogram of the distribution of means of 40 exponential distributions will be plotted
 
 ```{r}
+# calculating the theoretical mean
+theoryMean <- 1 / l
 
+# creating the histogram of the distribution of means
+hist(meanSim, breaks = 30, main = "Distribution of Means of 40 Exponential Distributions", xlab = "Means", ylab = "Frequency of Occurence")
+
+# showing the theoretical mean on top of the histogram
+abline(v = theoryMean, col = "blue", lwd = 4, lty = 6)
+
+# highlighting the theoretical mean
+legend(x = "topright", lwd = 4, lty = 6, col = "blue", legend = "Theoretical Mean")
 ```
+
+From the histogram, the theoretical mean seems to be close to the sample mean. This can be verified from their numerical values.
+
+```{r}
+# calculating and displaying the sample mean
+sampleMean <- mean(meanSim)
+sampleMean
+```
+
+```{r}
+# displaying the theoretical mean
+theoryMean
+```
+
+Thus, the sample mean is almost equal to the theoretical mean.
+
+## 4. Sample Variance versus Theoretical Variance
+
+For this distribution, the theoretical variance will be `((1 / l)^2) / n`, where `1 / l` is the standard deviation of the exponential distribution. Thus, the theoretical standard deviation of the distribution is `(1 / l) / sqrt(n)`. This theoretical variance will be compared to the sample variance.
+
+```{r}
+# calculating and displaying the sample variance
+sampleVar <- var(meanSim)
+sampleVar
+```
+
+```{r}
+# calculating and displaying the theoretical standard
+theoryVar <- ((1 / l)^2) / n
+theoryVar
+```
+
+The value of the sample variance is close to that of the theoretical variance.
+
