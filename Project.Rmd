@@ -9,6 +9,12 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r, results='hide'}
+# loading the required libraries
+
+library(ggplot2)
+```
+
 # Simulation Exercise
 
 ## 1. Overview
@@ -19,7 +25,7 @@ The goal of this exercise is to investigate the exponential distribution and exp
 
 For the exponential distribution, its mean is `1 / lamda`, where `lambda` is defined as the rate parameter. This will act as the theoretical mean of the distribution.
 
-The sample mean to be calculated is the mean of the distribution of means of 40 exponential distributions. Ideally, this distribution would have been found by simulating 40 different exponential distributions and calculating their mean, and repeating this process infinite number of times. But, for practical purposes, we will perform 1000 such simulations.
+The sample mean to be calculated is the mean of the distribution of means of 40 exponential distributions. Ideally, this distribution would have been found by simulating 40 different exponential distributions and calculating their mean, and repeating this process infinite number of times. But, for practical purposes, we will perform 1000 such simulations, which will yield 1000 means.
 
 ```{r}
 # setting some default values for this exercise
