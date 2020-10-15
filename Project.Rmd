@@ -1,5 +1,5 @@
 ---
-title: "Statistical Inference Course Project"
+title: "Statistical Inference Course Project Part 1"
 author: "Sarthak"
 output:
   pdf_document: default
