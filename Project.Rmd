@@ -114,3 +114,25 @@ theoryVar
 
 The value of the sample variance is close to that of the theoretical variance.
 
+## 5. Normality of the Distribution
+
+The distribution of means of 40 exponential distributions will be compared to the distribution of 1000 random exponential distributions to explore the normality of the former. 
+
+```{r}
+# creating a grid for 2 plots
+par(mfrow = c(2, 1))
+
+# creating a histogram of the distribution of 1000 random exponential
+# distributions
+hist(rexp(1000, rate = l), breaks = 30,
+     main = "Distribution of 1000 random exponential distributions",
+     col = "blue", xlab = "Exponential Values", ylab = "Frequency")
+
+# creating a histogram of the distribution of means of 40 exponential
+# distributions
+hist(meanSim, breaks = 30, col = "red", 
+     main = "Distribution of means of 40 exponential distributions",
+     xlab = "Means", ylab = "Frequency")
+```
+
+From the two histograms, it is clear that the distribution of 1000 random exponential distributions is not normal, rather it is skewed. On the other hand, the distribution of 1000 means of 40 exponential distributions is really close to the normal distribution, and is the consequence of the Central Limit Theorem, _since the distribution of means contains 1000 means_; and for a sufficiently large sample size, distribution of means of any distribution will approximate to the normal distribution.
