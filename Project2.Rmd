@@ -1,0 +1,43 @@
+---
+title: "Statistical Inference Course Project Part 2"
+author: "Sarthak"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+```
+
+```{r, results='hold'}
+# loading the required libraries
+library(ggplot2)
+library(dplyr)
+```
+
+# Basic Inferential Data Analysis
+
+## 1. Overview
+
+In this analysis, the ToothGrowth data will be analyzed, which can be found in the R `datasets` package.
+
+## 2. Loading the Dataset and performing EDA
+
+The ToothGrowth data set has to be loaded from the `datasets` package in R.
+
+```{r}
+# loading the datasets package
+library(datasets)
+
+# loading the ToothGrowth data set
+data("ToothGrowth")
+```
+
+Next, a plot will be created showing the trends in toothgrowth with respect to each supplement
+
+```{r}
+# creating a point plot of the variation of teeth growth with respect to each dose level of a supplement, and fitting a linear line over those points
+qplot(x = dose, y = len, data = ToothGrowth, color = supp, geom = "point",
+      main = "Tooth Growth with each Dose Level of a Supplement",
+      xlab = "Dose Level", ylab = "Growth in Tooth Length") +
+geom_smooth(method = "lm")
+```
