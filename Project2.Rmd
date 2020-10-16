@@ -18,9 +18,9 @@ library(dplyr)
 
 ## 1. Overview
 
-In this analysis, the ToothGrowth data will be analyzed, which can be found in the R `datasets` package. This data set contains data on the effects of Vitamin C on the growth of teeth in guinea pigs. Two Vitamin C supplements are used, with varying dose levels.
+In this analysis, the ToothGrowth data will be analyzed. This shows the effect of vitamin C on teeth-growth in guinea pigs. Two vitamin C supplements are used, with varying dose levels.
 
-## 2. Loading the Dataset and performing EDA
+## 2. Loading the Dataset and basic Exploratory Data Analysis
 
 The ToothGrowth data set has to be loaded from the `datasets` package in R.
 
@@ -41,4 +41,25 @@ qplot(x = dose, y = len, data = ToothGrowth, color = supp, geom = "point",
       main = "Tooth Growth with each Dose Level of a Supplement",
       xlab = "Dose Level", ylab = "Growth in Tooth Length") +
 geom_smooth(method = "lm") + theme_bw() + labs(colour = "Supplement")
+```
+
+From the plot, it is clear that the tooth length increases with increasing levels of dose of both supplements, and the _OJ_ supplement has higher tooth length growths than the _VC_ supplement. The growth rate for the two supplements merge at dose levels of 2 mg/day, whereas there is some difference in growth levels for the lower dose levels of the two supplements. Also, the growth rate with respect to each dose level of _VC_ is higher than that of _OC_.
+
+## 3. Basic Data Summary
+
+A summary of the whole dataset has been shown below
+
+```{r}
+# generating a summary of all variables in the dataset
+summary(ToothGrowth)
+```
+
+```{r}
+# mean tooth growth length
+mean(ToothGrowth$len)
+```
+
+```{r}
+# standard deviation of the length of tooth growth
+sd(ToothGrowth$len)
 ```
