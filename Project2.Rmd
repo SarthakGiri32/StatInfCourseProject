@@ -18,7 +18,7 @@ library(dplyr)
 
 ## 1. Overview
 
-In this analysis, the ToothGrowth data will be analyzed, which can be found in the R `datasets` package.
+In this analysis, the ToothGrowth data will be analyzed, which can be found in the R `datasets` package. This data set contains data on the effects of Vitamin C on the growth of teeth in guinea pigs. Two vitamin C supplements are used, with varying dose levels.
 
 ## 2. Loading the Dataset and performing EDA
 
@@ -32,15 +32,13 @@ library(datasets)
 data("ToothGrowth")
 ```
 
-Next, a plot will be created showing the trends in toothgrowth with respect to each supplement
+Next, a plot will be created showing the trends in tooth-growth with respect to each supplement
 
 ```{r}
 # creating a point plot of the variation of teeth growth with respect to each dose level 
-# of a supplement, and fitting a linear line over those points;
-# the 'theme_bw()' function will add a light background with gray grid lines
-# to the plot
+# of a supplement, and fitting a linear line over those points
 qplot(x = dose, y = len, data = ToothGrowth, color = supp, geom = "point",
       main = "Tooth Growth with each Dose Level of a Supplement",
       xlab = "Dose Level", ylab = "Growth in Tooth Length") +
-geom_smooth(method = "lm") + theme_bw()
+geom_smooth(method = "lm") + theme_bw() + labs(colour = "Supplement")
 ```
