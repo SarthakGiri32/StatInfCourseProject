@@ -8,7 +8,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
-```{r, results='hold'}
+```{r, results='hide'}
 # loading the required libraries
 library(ggplot2)
 library(dplyr)
@@ -151,4 +151,6 @@ The assumptions used in the hypothesis tests using two-sided, two-sample t-test 
 a) The data approximately follows the normal distribution.  
 b) The variances of the two samples are not the same.  
 c) The two samples are independent.  
-d) The samples are random.  
+d) The samples are random. 
+
+The Conclusions are that there is no significance difference between the means for all doses under supplements _OJ_ and _VC_. For doses of 0.5 and 1.0 mg/ml, there is a significant difference between the means, whereas for the dose of 2.0 mg/ml, there is no significant difference between the means.
