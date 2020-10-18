@@ -145,7 +145,7 @@ t.test(len ~ supp, data = ToothGrowth[ToothGrowth$dose == 2.0,],
 
 From the t-test, it is clear that the p-value is way above 0.05, which means that the null hypothesis cannot be rejected, and there isn't any significant difference between the means of the samples for the dose level of 2.0 mg/ml.
 
-## 5. Assumptions:
+## 5. Assumptions and Conclusions:
 
 The assumptions used in the hypothesis tests using two-sided, two-sample t-test are:  
 a) The data approximately follows the normal distribution.  
